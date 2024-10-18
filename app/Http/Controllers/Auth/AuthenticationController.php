@@ -10,14 +10,14 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthenticationController extends Controller
 {
-    public function store(AuthenticationRequest $request)
+    public function login(AuthenticationRequest $request)
     {
         $credentials = $request->validated();
 
         $user = User::where('username', $credentials['username'])->first();
 
         if (!$user || !Hash::check($credentials['password'], $user->password)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
+            return response()->json(['message' => __('auth.failed')], 401);
         }
 
         $token = $user->createToken('auth_token')->plainTextToken;
@@ -28,10 +28,10 @@ class AuthenticationController extends Controller
         ]);
     }
 
-    public function destroy(Request $request)
+    public function logout(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
 
-        return response()->json(['message' => 'Successfully logged out']);
+        return response()->json(['message' => __('auth.logout')]);
     }
 }
