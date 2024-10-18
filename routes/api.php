@@ -10,3 +10,7 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/login', [AuthenticationController::class, 'store'])
     ->name('login');
+
+Route::post('/logout', [AuthenticationController::class, 'destroy'])
+    ->name('logout')
+    ->middleware('auth:sanctum');
