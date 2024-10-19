@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use App\Models\Product;
 use App\Repositories\Contracts\ProductRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class ProductRepository implements ProductRepositoryInterface
 {
@@ -14,27 +15,35 @@ class ProductRepository implements ProductRepositoryInterface
         $this->product = $product;
     }
 
-    public function getAllProducts()
+    public function getAllProducts(): Collection
     {
-        return $this->product->all()->paginate(10);
+        return $this->product->all();
     }
 
-    public function getProductbyId(int $id)
+    public function getProductbyId(string $id): ?Product
     {
         return $this->product->find($id);
     }
 
-    public function createProduct(array $data)
+    public function createProduct(array $data): Product
     {
         return $this->product->create($data);
     }
 
-    public function updateProduct(int $id, array $data)
+    public function updateProduct(string $id, array $data): ?Product
     {
-        return $this->product->find($id)->update($data);
+        $product = $this->product->find($id);
+
+        if (!$product) {
+            return null;
+        }
+
+        $product->update($data);
+
+        return $product;
     }
 
-    public function deleteProduct(int $id)
+    public function deleteProduct(string $id): bool
     {
         return $this->product->find($id)->delete();
     }
