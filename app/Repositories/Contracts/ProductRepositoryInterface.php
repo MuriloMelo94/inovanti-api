@@ -2,11 +2,14 @@
 
 namespace App\Repositories\Contracts;
 
+use App\Models\Product;
+use Illuminate\Database\Eloquent\Collection;
+
 interface ProductRepositoryInterface
 {
-    public function getAllProducts();
-    public function getProductbyId(int $id);
-    public function createProduct(array $product);
-    public function updateProduct(int $id, array $product);
-    public function deleteProduct(int $id);
+    public function getAllProducts(): Collection;
+    public function getProductbyId(string $id): ?Product;
+    public function createProduct(array $product): Product;
+    public function updateProduct(string $id, array $product): ?Product;
+    public function deleteProduct(string $id): bool;
 }
