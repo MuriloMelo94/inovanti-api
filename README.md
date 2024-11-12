@@ -8,7 +8,7 @@ This project demonstrates the development of an API for product CRUD operations,
 - **PostgreSQL**
 
 ## Project Goals
-The API was developed in response to a request via email to showcase product management with CRUD functionality, as well as authentication using Sanctum. This project aims to employ development patterns and best practices, including:
+The API was developed to showcase an REST API for product management with CRUD functionality, as well as authentication using Sanctum. This project aims to employ development patterns and best practices, including:
 
 - **PSR (PHP Standards Recommendations)**
 - **Clean Code Principles**
