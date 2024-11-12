@@ -17,7 +17,9 @@ The API was developed to showcase an REST API for product management with CRUD f
 - **Strong Typing**
 
 ## Issues and Milestones
-You can track the project’s issues and milestones at: [GitHub Issues](https://github.com/MuriloMelo94/inovanti-api/issues?q=is%3Aissue)
+You can track the project’s issues and milestones at: [GitHub Issues](https://github.com/MuriloMelo94/inovanti-api/issues?q=is%3Aissue) 
+
+CS50 introducing video: [click](https://youtu.be/tT-suhlltlU)
 
 ## Local Development Setup
 
